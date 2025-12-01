@@ -1,0 +1,17 @@
+# Các thư viện nặng (Install lại bằng npm install)
+node_modules/
+
+# Thư mục build ra (Code TypeScript đã biên dịch)
+dist/
+
+# File cấu hình môi trường (Chứa mật khẩu, API Key - không được share)
+.env
+
+# File hệ thống
+.DS_Store
+Thumbs.db
+
+# Log lỗi
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
