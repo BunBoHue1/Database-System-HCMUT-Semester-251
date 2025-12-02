@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= isEdit ? 'Update user' : 'Add new User'%></title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center py-10">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
+      <h2 class="text-2xl font-bold mb-6 text-gray-800 border b pb-2">
+        <%= isEdit ? 'Update User' : 'Add new User' %>
+      </h2>
+
+      <% if (typeof error !== 'undefined' && error) { %>
+      <div
+        class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6"
+        role="alert"
+      >
+        <p class="font-bold">Error:</p>
+        <p><%= error %></p>
+      </div>
+      <% } %>
+
+      <form
+        action="<%= isEdit ? '/user/edit/' + user.User_ID : '/user/add' %>"
+        method="POST"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2"
+              >CCCD (12 numbers)</label
+            >
+            <input
+              type="text"
+              name="ID_number"
+              value="<%= user.ID_number || '' %>"
+              required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2"
+              >Full Name</label
+            >
+            <input
+              type="text"
+              name="Full_name"
+              value="<%= user.Full_name || '' %>"
+              required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2"
+              >Phone number</label
+            >
+            <input
+              type="text"
+              name="Phone_number"
+              value="<%= user.Phone_number || '' %>"
+              required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2"
+              >Email *</label
+            >
+            <input
+              type="email"
+              name="Email"
+              value="<%= user.Email || '' %>"
+              required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+
+          <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Gender</label>
+                    <select name="Gender" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="Male" <%= user.Gender === 'Male' ? 'selected' : '' %>>Male</option>
+                        <option value="Female" <%= user.Gender === 'Female' ? 'selected' : '' %>>Female</option>
+                        <option value="Other" <%= user.Gender === 'Other' ? 'selected' : '' %>>Other</option>
+                    </select>
+          </div>
+
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2"
+              >Birthday</label
+            >
+            <input
+              type="date"
+              name="Birthday"
+              value="<%= user.Birthday ? new Date(user.Birthday).toISOString().split('T')[0] : '' %>"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+            />
+          </div>
+
+          <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Status</label>
+                    <select name="Account_status" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="active" <%= user.Account_status === 'active' ? 'selected' : '' %>>Active</option>
+                        <option value="warning" <%= user.Account_status === 'warning' ? 'selected' : '' %>>Warning</option>
+                        <option value="restricted" <%= user.Account_status === 'restricted' ? 'selected' : '' %>>Restricted</option>
+                    </select>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end mt-8 gap-4">
+                <a href="/users" class="text-gray-600 hover:text-gray-800 font-bold">Delete</a>
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline transition transform hover:scale-105">
+                    <%= isEdit ? 'Update' : 'Add' %>
+                </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
