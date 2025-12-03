@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIP Customer</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="bg-gray-50 min-h-screen p-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold text-pink-700">Potential Customer</h1>
+        <a href="/" class="text-gray-600 hover:text-blue-500 underline"
+          >Back to Home</a
+        >
+      </div>
+      <% if(typeof error !== 'undefined' && error) { %>
+        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 shadow-sm" role="alert">
+          <p class="font-bold text-lg">Error:</p>
+          <p><%= error %></p>
+        </div>
+      <% } %>
+
+      <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+        <form
+          action="/report/vip"
+          method="GET"
+          class="flex flex-wrap gap-4 items-end"
+        >
+          <div>
+            <label for="Year" class="block text-gray-700 text-sm font-bold mb-2"
+              >Year</label
+            >
+            <input
+              type="number"
+              name="year"
+              value="<%= query.year || new Date().getFullYear() %>"
+              required
+              class="shadow border rounded py-2 px-3 text-gray-700 w-32 focus:outline-none focus:ring-2 focus:ring-pink-400"
+            />
+          </div>
+
+          <div>
+            <label
+              for="spend"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Min Spending</label
+            >
+            <input
+              type="number"
+              name="minSpend"
+              value="<%= query.minSpend || 100000 %>"
+              required
+              class="shadow border rounded py-2 px-3 text-gray-700 w-48 focus:outline-none focus:ring-2 focus:ring-pink-400"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-6 rounded shadow-pink-200 transition hover:scale-105"
+          >
+            Filter
+          </button>
+        </form>
+      </div>
+
+      <div
+        class="bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200"
+      >
+        <table class="min-w-full leading-normal">
+          <thead>
+            <tr class="bg-pink-100 text-pink-900">
+              <th
+                class="px-5 py-3 text-left text-xs font-bold uppercase tracking-wider"
+              >
+                User ID
+              </th>
+              <th
+                class="px-5 py-3 text-left text-xs font-bold uppercase tracking-wider"
+              >
+                Full Name
+              </th>
+              <th
+                class="px-5 py-3 text-left text-xs font-bold uppercase tracking-wider"
+              >
+                Email
+              </th>
+              <th
+                class="px-5 py-3 text-left text-xs font-bold uppercase tracking-wider"
+              >
+                Total Order
+              </th>
+              <th
+                class="px-5 py-3 text-left text-xs font-bold uppercase tracking-wider"
+              >
+                Total Spending
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (results && results.length > 0) { %>
+                <% results.forEach(function(r) { %>
+                    <tr class="hover:bg-pink-50 transition border-b border-gray-100">
+                        <td class="px-5 py-4 text-sm font-medium"><%= r.User_ID %></td>
+                        <td class="px-5 py-4 text-sm font-medium"><%= r.Full_name %></td>
+                        <td class="px-5 py-4 text-sm font-medium"><%= r.Email %></td>
+                        <td class="px-5 py-4 text-sm font-medium"><span class="bg-blue-100 text-blue-800 py-1 px-3 rounded-full text-xs font-bold">
+                            <%= r.Tong_So_Don %></span>
+                        </span></td>
+                        <td class="px-5 py-4 text-sm font-medium"><%= r.Tong_Chi_Tieu %> VND</td>
+                    </tr>
+                    <% }); %>
+                    <% } else {%>
+                        <tr>
+                            <td colspan="5" class="px-5 py-10 text-center text-gray-500 italic">
+                                Not found customer 
+                            </td>
+                        </tr>
+                        <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

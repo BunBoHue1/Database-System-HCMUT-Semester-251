@@ -36,6 +36,31 @@ app.get("/users", async (req: Request, res: Response) => {
   }
 });
 
+app.get("/report/vip", async (req: Request, res: Response) => {
+  const year = req.query.year ? parseInt(req.query.year as string) : 2025;
+  const minSpend = req.query.minSpend
+    ? parseFloat(req.query.minSpend as string)
+    : 100;
+
+  try {
+    const pool = await connectToDB();
+
+    const result = await pool
+      ?.request()
+      .input("Year", sql.Int, year)
+      .input("Min_Spending", sql.Decimal(15, 2), minSpend)
+      .execute("SP_Get_Potential_Vip_Users");
+
+    res.render("vip-report", {
+      results: result?.recordset || [],
+      query: { year, minSpend },
+    });
+  } catch (err: any) {
+    console.log("Error report:", err.message);
+    res.send("Error fetching report: " + err.message);
+  }
+});
+
 app.get("/user/add", (req, res) => {
   res.render("user-form", { user: {}, isEdit: false, error: null });
 });
