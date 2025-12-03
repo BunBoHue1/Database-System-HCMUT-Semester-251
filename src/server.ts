@@ -3,6 +3,7 @@ import express, { Request, Response } from "express";
 import path from "path";
 import { connectToDB } from "./db";
 import { sql } from "./db";
+import { query } from "mssql";
 
 const app = express();
 const PORT = 3000;
@@ -59,6 +60,50 @@ app.get("/report/vip", async (req: Request, res: Response) => {
     console.log("Error report:", err.message);
     res.send("Error fetching report: " + err.message);
   }
+});
+
+app.get("/recommendation", async (req: Request, res: Response) => {
+  const customerId = req.query.customerId
+    ? parseInt(req.query.customerId as string)
+    : null;
+  const limit = req.query.limit ? parseInt(req.query.limit as string) : 10;
+
+  let products = [];
+  let error = null;
+
+  if (customerId) {
+    try {
+      const pool = await connectToDB();
+
+      const result = await pool
+        ?.request()
+        .input("customerID", sql.Int, customerId)
+        .input("limitRange", sql.Int, limit)
+        .query(
+          "SELECT dbo.ProductRecommendationEngine(@customerID, @limitRange) AS JsonOutput"
+        );
+
+      const jsonString = result?.recordset[0].JsonOutput;
+
+      if (jsonString) {
+        const parsedData = JSON.parse(jsonString);
+
+        if (parsedData.status === true) {
+          products = parsedData.recommendedProducts;
+        } else {
+          error = parsedData.message || "Error not found (system).";
+        }
+      }
+    } catch (err: any) {
+      console.error("Error recommendation:", err.message);
+      error = "Error: " + err.message;
+    }
+  }
+  res.render("recommendation", {
+    products,
+    error,
+    query: { customerId, limit },
+  });
 });
 
 app.get("/user/add", (req, res) => {
