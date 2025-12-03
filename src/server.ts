@@ -55,10 +55,15 @@ app.get("/report/vip", async (req: Request, res: Response) => {
     res.render("vip-report", {
       results: result?.recordset || [],
       query: { year, minSpend },
+      error: null,
     });
   } catch (err: any) {
     console.log("Error report:", err.message);
-    res.send("Error fetching report: " + err.message);
+    res.render("vip-report", {
+      results: [],
+      query: { year, minSpend },
+      error: err.message,
+    });
   }
 });
 
