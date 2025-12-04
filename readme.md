@@ -70,3 +70,20 @@ Mở SSMS và chạy các file script SQL theo **đúng thứ tự** sau để �
 
 - Đảm bảo SQL Server đã bật giao thức **TCP/IP** (Trong SQL Server Configuration Manager -> SQL Server Network Configuration -> Protocols -> TCP/IP -> Enabled).
 - Restart lại SQL Server Service sau khi bật TCP/IP.
+
+### 3. Cấu hình Biến môi trường (.env)
+
+Dự án sử dụng biến môi trường để bảo mật thông tin kết nối:
+
+1. Tại thư mục gốc, copy file .env.example thành file .env
+2. Mở file .env và điền thông tin SQL Sever của bạn
+
+### 4. Chạy chương trình
+
+## Terminal: Chạy Server (Backend)
+
+```bash
+npm run dev
+```
+
+Sever sẽ chạy tại: http://localhost:3000
