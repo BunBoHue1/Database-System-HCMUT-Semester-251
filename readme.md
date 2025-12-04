@@ -48,8 +48,8 @@ Mở Terminal (CMD/PowerShell) tại thư mục muốn lưu dự án:
 
 ```bash
 # Clone dự án (hoặc giải nén file zip nộp bài)
-git clone <link-repo-cua-ban>
-cd BTL_Database
+git clone https://github.com/BunBoHue1/Database-System-HCMUT-Semester-251.git
+cd Database-System-HCMUT-Semester-251
 
 # Cài đặt các thư viện cần thiết
 npm install
