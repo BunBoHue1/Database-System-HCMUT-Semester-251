@@ -3,7 +3,6 @@ import express, { Request, Response } from "express";
 import path from "path";
 import { connectToDB } from "./db";
 import { sql } from "./db";
-import { query } from "mssql";
 
 const app = express();
 const PORT = 3000;

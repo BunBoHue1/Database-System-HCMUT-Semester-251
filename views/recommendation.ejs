@@ -82,8 +82,15 @@
           <div
             class="h-48 bg-gray-200 flex items-center justify-center relative"
           >
-            <span class="text-4xl">📦</span>
-            <% if (p.rating >= 4.5) { %>
+            <% if (p.baseImage) { %>
+            <img
+              src="/<%= p.baseImage %>"
+              alt="<%= p.productName %>"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <span class="text-4xl absolute hidden">📦</span>
+            <% } else { %> <span class="text-4xl">📦</span> <% } %> <% if
+            (p.rating >= 4.5) { %>
             <span
               class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded"
               >High rating</span
