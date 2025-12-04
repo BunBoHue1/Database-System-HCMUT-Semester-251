@@ -47,7 +47,7 @@ Trước khi chạy chương trình, máy tính cần cài đặt:
 Mở Terminal (CMD/PowerShell) tại thư mục muốn lưu dự án:
 
 ```bash
-# Clone dự án (hoặc giải nén file zip nộp bài)
+# Clone dự án
 git clone https://github.com/BunBoHue1/Database-System-HCMUT-Semester-251.git
 cd Database-System-HCMUT-Semester-251
 
@@ -86,4 +86,4 @@ Dự án sử dụng biến môi trường để bảo mật thông tin kết n�
 npm run dev
 ```
 
-Sever sẽ chạy tại: http://localhost:3000
+Truy cập url http://localhost:3000 để khám phá sản phẩm
