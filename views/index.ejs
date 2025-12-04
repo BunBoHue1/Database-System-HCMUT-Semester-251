@@ -3,30 +3,97 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test Giao Diện</title>
+    <title>Management System Shopee</title>
     <link href="/style.css" rel="stylesheet" />
   </head>
-  <body class="bg-gray-100 h-screen flex items-center justify-center">
-    <div
-      class="bg-white p-10 rounded-xl shadow-2xl text-center max-w-md mx-auto border border-gray-200"
-    >
-      <div class="mb-4 text-6xl">🎉</div>
+  <body class="bg-gray-50 min-h-screen flex flex-col items-center pt-20 pb-10">
+    <div class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        Welcome to system Shopee Admin !
+      </h1>
+      <div class="h-1 w-32 bg-gray-200 mx-auto rounded-full"></div>
+    </div>
 
-      <h1 class="text-4xl font-extrabold text-blue-600 mb-2">Hello World!</h1>
-
-      <p class="text-gray-500 font-medium text-lg mb-6"><%= message %></p>
-
-      <button
-        class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 transform hover:scale-105 cursor-pointer"
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full px-6">
+      <a
+        href="/users"
+        class="group bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer"
       >
-        Bắt đầu Code
-      </button>
+        <div
+          class="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-100 transition"
+        >
+          <svg
+            class="w-10 h-10 text-blue-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+            ></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-700 mb-2">Manage Users</h3>
+        <p class="text-gray-400 text-sm">
+          Add, Delete, Update User information
+        </p>
+      </a>
+
       <a
         href="/report/vip"
-        class="block w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-4 rounded mb-3 transition"
+        class="group bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer"
       >
-        Vip Report 3.2
+        <div
+          class="w-20 h-20 bg-purple-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-pink-100 transition"
+        >
+          <svg
+            class="w-10 h-10 text-pink-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+            ></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-700 mb-2">VIP Customer</h3>
+        <p class="text-gray-400 text-sm">Analyzing & Filter</p>
       </a>
+
+      <a
+        href="/recommendation"
+        class="group bg-white p-8 rounded-2xl col-span-2 shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+      >
+        <div
+          class="w-20 h-20 bg-orange-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-orange-100 transition"
+        >
+          <svg
+            class="w-10 h-10 text-orange-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 10V3L4 14h7v7l9-11h-7z"
+            ></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-700 mb-2">Recommendation</h3>
+        <p class="text-gray-400 text-sm">Analyzing and recommendation</p>
+      </a>
+      <footer class="mt-16 text-gray-400 text-sm col-span-2 text-center">
+        DATABASE ASSIGNMENT - GROUP 6
+      </footer>
     </div>
   </body>
 </html>
