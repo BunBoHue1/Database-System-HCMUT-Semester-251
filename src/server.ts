@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import bodyParser from "body-parser";
 import express, { Request, Response } from "express";
 import path from "path";
@@ -5,7 +7,7 @@ import { connectToDB } from "./db";
 import { sql } from "./db";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
