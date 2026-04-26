@@ -4,7 +4,6 @@
 
 USE [QL_SHOPEE_BTL];
 GO
--- Dữ liệu mẫu của Quý 
 
 -- ===================================================
 -- CLEANUP SCRIPT

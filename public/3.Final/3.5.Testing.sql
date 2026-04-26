@@ -1,7 +1,6 @@
 USE [QL_SHOPEE_BTL];
 GO
 --- ===================================================
---phần của đức
 -- Test cases for dbo.usp_User_Insert
 --trả về lỗi require id number
 exec dbo.usp_User_Insert   
@@ -516,7 +515,6 @@ EXEC SP_Get_Potential_Vip_Users
 GO
 
 -- ===================================================
---phần của dũng
 -- Khối lệnh dùng để test các hàm, muốn kiểm tra tham số nào của sản phẩm thì thêm  vào tập kết quả cuối cùng, và group by
 DECLARE @CUSTID INT = 110;
 DECLARE @LIMIT INT = 10;

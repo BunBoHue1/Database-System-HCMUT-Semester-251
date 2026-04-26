@@ -5,7 +5,6 @@ GO
 -- ===================================================
 -- TRIGGERS
 -- ===================================================
---trigger của quý
 -- TRIGGER 1: Kiểm tra Tồn kho (SKU)
 CREATE TRIGGER TR_Check_Stock_On_Insert
 ON ORDER_ITEM
@@ -241,7 +240,6 @@ BEGIN
 END;
 GO
 -- ===================================================
---trigger của tùng
 -- TRIGGER 8: VOUCHER MINIMUM SPEND VALIDATION (Ràng buộc Nghiệp vụ)
 
 IF OBJECT_ID('TRG_Validate_Voucher_Min_Spend', 'TR') IS NOT NULL
